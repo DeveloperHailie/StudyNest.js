@@ -12,6 +12,7 @@ export class MoviesService {
   }
 
   getOne(id: number): Movie {
+    /*
     if(id==0){
       throw new BadRequestException('400 exception test');
     }else if(id==-1){
@@ -21,6 +22,7 @@ export class MoviesService {
         error: '403 exception test'
       }, HttpStatus.FORBIDDEN)
     }
+    */
 
     const movie = this.movies.find((movie) => movie.id === id);
     if (!movie) {
