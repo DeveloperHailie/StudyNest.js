@@ -6,7 +6,7 @@ import { AppModule } from './../src/app.module';
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
@@ -44,5 +44,11 @@ describe('AppController (e2e)', () => {
         .delete("/movies")
         .expect(404); 
     });
+  });
+
+  describe('/movies/:id',() => {
+    it.todo("GET")
+    it.todo("DELETE");
+    it.todo("PATCH");
   });
 });
