@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 import { Movie } from './entities/movie.entity';
@@ -32,6 +32,11 @@ export class MoviesService {
   }
 
   update(id: number, updateData: UpdateMovieDto) {
+    /*throw new HttpException({
+      status:  HttpStatus.BAD_REQUEST,
+      error: `Movie with ID ${id} Not found`
+    }, HttpStatus.BAD_REQUEST);*/
+
     const movie = this.getOne(id);
     this.deleteOne(id);
     this.movies.push({

@@ -74,16 +74,16 @@ describe('AppController (e2e)', () => {
     it('GET 404', () => {
       return request(app.getHttpServer()).get('/movies/999').expect(404);
     });
-    it('PATCH 200', () => {
+    it('PATCH 201', () => {
       return request(app.getHttpServer())
         .patch('/movies/1')
         .send({
           title: 'Updated Test',
         })
-        .expect(200);
+        .expect(201);
     });
-    it('DELETE 200', () => {
-      return request(app.getHttpServer()).delete('/movies/1').expect(200);
+    it('DELETE 204', () => {
+      return request(app.getHttpServer()).delete('/movies/1').expect(204);
     });
   });
 });
