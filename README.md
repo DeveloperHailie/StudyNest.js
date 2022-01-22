@@ -24,7 +24,10 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Learning NestJS by making an enterprise ready API <br>
+Study : [Notion](https://developerhailie.notion.site/hi-nest-a38eee2507af43e99e088ace0240750f), [Lecture](https://nomadcoders.co/nestjs-fundamentals/lobby) <br>
+
+
 
 ## Installation
 
