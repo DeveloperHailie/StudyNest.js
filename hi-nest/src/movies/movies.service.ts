@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, HttpException, HttpStatus, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 import { Movie } from './entities/movie.entity';
@@ -12,6 +12,16 @@ export class MoviesService {
   }
 
   getOne(id: number): Movie {
+    if(id==0){
+      throw new BadRequestException('400 exception test');
+    }else if(id==-1){
+      throw new UnauthorizedException('401 exception test');
+    }else if(id==-2){
+      throw new HttpException({
+        error: '403 exception test'
+      }, HttpStatus.FORBIDDEN)
+    }
+
     const movie = this.movies.find((movie) => movie.id === id);
     if (!movie) {
       throw new NotFoundException(`Movie with ID ${id} Not found`);
@@ -32,11 +42,6 @@ export class MoviesService {
   }
 
   update(id: number, updateData: UpdateMovieDto) {
-    /*throw new HttpException({
-      status:  HttpStatus.BAD_REQUEST,
-      error: `Movie with ID ${id} Not found`
-    }, HttpStatus.BAD_REQUEST);*/
-
     const movie = this.getOne(id);
     this.deleteOne(id);
     this.movies.push({
