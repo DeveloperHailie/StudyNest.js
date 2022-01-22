@@ -96,7 +96,7 @@ describe('MoviesService', () => {
     });
     it('should throw a NotFoundException', () => {
       try {
-        service.update(999,{title:'Updated Test'});
+        service.update(999, { title: 'Updated Test' });
       } catch (e) {
         expect(e).toBeInstanceOf(NotFoundException);
       }
